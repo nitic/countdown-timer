@@ -67,15 +67,15 @@ function countDown(){
             sec.innerHTML = pad(Math.floor(seconds % 60))
 
             if (seconds == 180) { // 3 นาที
-                let audio = new Audio('3min.mp3');
+                let audio = new Audio('3min.ogg');
                     audio.play();
             }else if (seconds == 60) { // 1 นาที
-                let audio = new Audio('1min.mp3');
+                let audio = new Audio('1min.ogg');
                     audio.play();
             }
 
          }else{ //หมดเวลา
-            let audio = new Audio('end.mp3');
+            let audio = new Audio('end.ogg');
             audio.play();
              restart()
          }
