@@ -10,10 +10,10 @@ clock.addEventListener('click' ,()=>{
 })
 
 //DISPLAY INPUT VALUE ON SCREEN
-
 const set_time = document.querySelectorAll('.popup input')
+const remember = document.querySelector('.popup-option input')
 const time = document.querySelectorAll('.timer div')
-console.log(time);
+//console.log(time);
 
 set_time.forEach(s=>{
     s.addEventListener('click' ,()=>{
@@ -26,6 +26,7 @@ set_time.forEach(s=>{
 })
 
 let seconds;
+
 const start = document.querySelector('.start')
 
 start.addEventListener('click' , countDown)
@@ -42,6 +43,9 @@ function countDown(){
 
     play_pause.classList.add('allow')
     reset.classList.add('allow')
+    reset.classList.add('p')
+    clock.classList.add('p')
+    
 
     popup.classList.remove('show')
     document.body.classList.remove('shadow')
@@ -61,15 +65,27 @@ function countDown(){
             hour.innerHTML = pad(Math.floor(seconds / 3600))
             min.innerHTML = pad(Math.floor(seconds % 3600 /60))
             sec.innerHTML = pad(Math.floor(seconds % 60))
-         }else{
+
+            if (seconds == 180) { // 3 นาที
+                let audio = new Audio('3min.mp3');
+                    audio.play();
+            }else if (seconds == 60) { // 1 นาที
+                let audio = new Audio('1min.mp3');
+                    audio.play();
+            }
+
+         }else{ //หมดเวลา
+            let audio = new Audio('end.mp3');
+            audio.play();
              restart()
          }
+
+        //  console.log(seconds)
       
     },1000)
 }
 
 //RESET COUNTDOWN
-
 reset.addEventListener('click' ,restart)
 function restart(){
     clearInterval(interval)
@@ -78,10 +94,24 @@ function restart(){
     sec.innerHTML = '00'
     popup.classList.add('show')
     document.body.classList.add('shadow')
+    play_pause.classList.add('p')
+    play_pause.innerHTML = 'Pause'
 
-    set_time.forEach(s=>{
-        s.value =0
+    //TIME REMEMBER
+    if(remember.checked){
+        set_time.forEach(s=>{
+            time.forEach(t=>{
+                if(t.dataset.index == s.dataset.value){
+                    t.innerHTML = pad(s.value) 
+                }
+            })
     })
+    }else{
+        set_time.forEach(s=>{
+            s.value =0
+        })
+    }
+   
 }
 
 play_pause.addEventListener('click' ,()=>{
@@ -96,6 +126,7 @@ play_pause.addEventListener('click' ,()=>{
     }
 })
 
+
 //HH:MM:SS FORMAT 
 function pad(val){
     let valString =val +""
@@ -105,3 +136,4 @@ function pad(val){
         return valString
     }
 }
+

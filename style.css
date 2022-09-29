@@ -36,7 +36,6 @@ background: linear-gradient(135deg, rgba(247, 202, 201, 1) 0%, rgba(146, 168, 20
     justify-content: center;
     font-size: 48px;
     font-weight: 500;
-    /* background-color: antiquewhite; */
     height: 250px;
     width: 250px;
     border-radius: 50%;
@@ -45,6 +44,12 @@ background: linear-gradient(135deg, rgba(247, 202, 201, 1) 0%, rgba(146, 168, 20
     margin-bottom: 2rem;
     cursor: pointer;
 
+}
+
+.timer.p{
+    pointer-events: none;
+    background-color: #4a5a64;
+    color: #f2f2f2;
 }
 
 .popup-wrapp{
@@ -75,12 +80,21 @@ background: linear-gradient(135deg, rgba(247, 202, 201, 1) 0%, rgba(146, 168, 20
     padding: .5rem 0;
     color: #fff;
     border-radius: 5px;
+    
 }
 
 
 .popup{
-    margin: 3rem 0;
+    margin: 2rem 0;
     text-align: center;
+}
+
+.popup-option{
+    margin-top: 1rem;
+    margin-left: 4rem;
+    text-align: left;
+    width: 220px;
+    font-size: 11pt;
 }
 
 .popup input{
@@ -119,12 +133,18 @@ button{
 }
 .allow{
     cursor: pointer;
+    pointer-events: auto;
 }
 
 
 .reset{
     border: 3px solid #bfbfbf;
     color: #bfbfbf;
+}
+
+.reset.p{
+    border: 3px solid #9b0606;
+    color: #333;
 }
 
 .play-pause{
