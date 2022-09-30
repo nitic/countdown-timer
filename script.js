@@ -72,11 +72,12 @@ function countDown(){
             }else if (seconds == 60) { // 1 นาที
                 let audio = new Audio('1min.ogg');
                     audio.play();
+            }else if (seconds == 1) { // 1 วินาที
+                let audio = new Audio('end.ogg');
+                    audio.play();
             }
 
          }else{ //หมดเวลา
-            let audio = new Audio('end.ogg');
-            audio.play();
              restart()
          }
 
